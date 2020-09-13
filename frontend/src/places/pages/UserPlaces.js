@@ -11,8 +11,8 @@ const DUMMY_PLACE = [
     imageUrl: "kdmckm klvfdmlbkmfgkbmfgblmflbmflnmlkhn",
     address: "",
     location: {
-      lat: 45.54545,
-      lng: 32.2545,
+      lat: 31.416,
+      lng: 34.333,
     },
     creator: "u1",
   },
@@ -23,8 +23,8 @@ const DUMMY_PLACE = [
     imageUrl: "kdmckm klvfdmlbkmfgkbmfgblmflbmflnmlkhn",
     address: "",
     location: {
-      lat: 45.54545,
-      lng: 32.2545,
+      lat: 31.416,
+      lng: 34.333,
     },
     creator: "u2",
   },
