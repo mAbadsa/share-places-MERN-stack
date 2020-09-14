@@ -1,4 +1,5 @@
 import React, { useReducer } from "react";
+import { validate } from "../../util/validators";
 
 import "./Input.css";
 
@@ -8,21 +9,44 @@ const inputReducer = (state, action) => {
       return {
         ...state,
         value: action.val,
-        isValid: true,
+        isValid: validate(action.val, action.validators),
+      };
+    case "TOUCH":
+      return {
+        ...state,
+        isTouched: true,
       };
     default:
       return state;
   }
 };
 
-function Input({ type, label, id, elementType, placeholder, rows, errorText }) {
+function Input({
+  type,
+  label,
+  id,
+  elementType,
+  placeholder,
+  rows,
+  errorText,
+  validators,
+}) {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: "",
+    isTouched: false,
     isValid: false,
   });
 
   const changeHandler = (event) => {
-    dispatch({ type: "CHANGE", val: event.target.value });
+    dispatch({
+      type: "CHANGE",
+      val: event.target.value,
+      validators: validators,
+    });
+  };
+
+  const touchHandler = () => {
+    dispatch({ type: "TOUCH" });
   };
 
   const element =
@@ -33,6 +57,7 @@ function Input({ type, label, id, elementType, placeholder, rows, errorText }) {
         placeholder={placeholder}
         value={inputState.value}
         onChange={changeHandler}
+        onBlur={touchHandler}
       />
     ) : (
       <textarea
@@ -40,17 +65,18 @@ function Input({ type, label, id, elementType, placeholder, rows, errorText }) {
         rows={rows || 3}
         value={inputState.value}
         onChange={changeHandler}
+        onBlur={touchHandler}
       />
     );
   return (
     <div
       className={`form-control ${
-        !inputState.isValid && "form-control--invalid"
+        !inputState.isValid && inputState.isTouched && "form-control--invalid"
       }`}
     >
       <label htmlFor={id}>{label}</label>
       {element}
-      {!inputState.isValid && <p>{errorText}</p>}
+      {!inputState.isValid && inputState.isTouched && <p>{errorText}</p>}
     </div>
   );
 }
