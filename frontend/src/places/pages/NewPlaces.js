@@ -7,7 +7,13 @@ import "./NewPlace.css";
 function NewPlaces() {
   return (
     <form className="place-form">
-      <Input type="text" label="Title" elementType="input" />
+      <Input
+        type="text"
+        label="Title"
+        elementType="input"
+        validators={[]}
+        errorText="Please enter a valid title."
+      />
     </form>
   );
 }
