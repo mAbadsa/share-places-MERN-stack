@@ -35,6 +35,7 @@ function Auth(props) {
   const authSubmitHandler = (evt) => {
     evt.preventDefault();
     console.log(formState.inputs);
+    login();
   };
 
   const switchModeHanler = () => {
@@ -96,7 +97,7 @@ function Auth(props) {
           validators={[VALIDATOR_MINLENGTH(5)]}
           onInput={inputHandler}
         />
-        <Button type="submit" disabled={!formState.isValid} onClick={login}>
+        <Button type="submit" disabled={!formState.isValid}>
           {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
