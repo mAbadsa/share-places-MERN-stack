@@ -95,11 +95,11 @@ function Auth(props) {
           onInput={inputHandler}
         />
         <Button type="submit" disabled={!formState.isValid}>
-          {isLoginMode ? "SIGNIN" : "SIGNUP"}
+          {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
       <Button revers onClick={switchModeHanler}>
-        SWITCH TO {isLoginMode ? "SIGNUP" : "SIGNIN"}
+        SWITCH TO {isLoginMode ? "SIGNUP" : "LOGIN"}
       </Button>
     </Card>
   );
