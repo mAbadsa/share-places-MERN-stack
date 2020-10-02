@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Card from "../../shared/components/UIElement/Card";
 import Input from "../../shared/components/FormElements/Input";
@@ -10,10 +10,12 @@ import {
 } from "../../shared/util/validators";
 
 import { useForm } from "../../shared/hooks/form-hook";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import "./Auth.css";
 
 function Auth(props) {
+  const { login } = useContext(AuthContext);
   const [isLoginMode, setIsLoginMode] = useState(true);
 
   const [formState, inputHandler, setFormData] = useForm(
@@ -94,7 +96,7 @@ function Auth(props) {
           validators={[VALIDATOR_MINLENGTH(5)]}
           onInput={inputHandler}
         />
-        <Button type="submit" disabled={!formState.isValid}>
+        <Button type="submit" disabled={!formState.isValid} onClick={login}>
           {isLoginMode ? "LOGIN" : "SIGNUP"}
         </Button>
       </form>
