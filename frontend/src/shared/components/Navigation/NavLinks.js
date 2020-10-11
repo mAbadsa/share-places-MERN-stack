@@ -24,15 +24,16 @@ function NavLinks() {
           <NavLink to="/places/new">ADD PLACE</NavLink>
         </li>
       )}
-      {isLoggedIn ? (
-        <li>
-          <NavLink to="/auth" onClick={logout}>
-            LOGOUT
-          </NavLink>
-        </li>
-      ) : (
+      {isLoggedIn && (
         <li>
           <NavLink to="/auth">AUTHENTICATE</NavLink>
+        </li>
+      )}
+      {isLoggedIn && (
+        <li>
+          <button onClick={logout}>
+            LOGOUT
+          </button>
         </li>
       )}
     </ul>
