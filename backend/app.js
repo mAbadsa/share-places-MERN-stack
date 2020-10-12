@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/place', placesRoutes);
+app.use('/api/places', placesRoutes);
 
 const port = process.env.PORT || 5500;
 
