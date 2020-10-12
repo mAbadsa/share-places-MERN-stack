@@ -23,11 +23,13 @@ router.route('/').get((req, res, next) => {
 router.route('/:pid').get((req, res, next) => {
     const placeId = req.params.pid;
     const place = DUMMY_PLACES.filter(item => item.id === placeId)
-    res.json({ messgae: place });
+    res.json({ place });
 })
 
-router.route('/users/:uid').get((req, res, next) => {
-
+router.route('/user/:uid').get((req, res, next) => {
+    const userId = req.params.uid;
+    const place = DUMMY_PLACES.find(p => p.creator === userId);
+    res.json({ place });
 })
 
 module.exports = router;
