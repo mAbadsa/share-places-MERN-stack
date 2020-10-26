@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 const DUMMY_PLACES = [
     {
       id: "p1",
@@ -41,7 +43,19 @@ const getPlaceByUserId = (req, res, next) => {
   }
 
   const createPlace = (req, res, next) => {
+    const { title, description, coordinates, address, creator} = req.body;
+    const createPlace = { 
+      id: uuidv4(),
+      title,
+      description,
+      location: coordinates,
+      address,
+      creator
+    };
+    
+    DUMMY_PLACES.push(createPlace);
 
+    res.status(201).json({place: createPlace});
   }
 
 module.exports = { getPlacesById, getPlaceByUserId, createPlace };
