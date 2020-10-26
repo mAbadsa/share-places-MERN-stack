@@ -40,4 +40,8 @@ const getPlaceByUserId = (req, res, next) => {
     });
   }
 
-module.exports = { getPlacesById, getPlaceByUserId };
+  const createPlace = (req, res, next) => {
+
+  }
+
+module.exports = { getPlacesById, getPlaceByUserId, createPlace };
