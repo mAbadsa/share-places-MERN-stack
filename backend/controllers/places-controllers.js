@@ -29,8 +29,6 @@ if (!place) {
   });
 };
 
-
-
 const getPlacesByUserId = (req, res, next) => {
   const userId = req.params.uid;
   const places = DUMMY_PLACES.filter((p) => p.creator === userId);
