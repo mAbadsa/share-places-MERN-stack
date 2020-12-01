@@ -1,6 +1,4 @@
-const express = require("express"),
-bodyParser = require("body-parser");
-
+const express = require("express");
 
 const placesRoutes = require("./routes/places-routes");
 const usersRoutes = require("./routes/users-routes");
@@ -8,7 +6,7 @@ const httpError = require("./models/http-error");
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/places', placesRoutes);
