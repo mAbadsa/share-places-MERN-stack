@@ -13,7 +13,14 @@ const {
 router
   .route("/:pid")
   .get(getPlaceById)
-  .patch(updatePlaceById)
+  .patch(
+    [
+      check("title").not().isEmpty(),
+      check("description").isLength({ min: 5 }),
+      check("address").not().isEmpty(),
+    ],
+    updatePlaceById
+  )
   .delete(deletePlace);
 
 router.route("/user/:uid").get(getPlacesByUserId);
